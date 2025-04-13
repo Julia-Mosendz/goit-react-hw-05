@@ -1,5 +1,5 @@
-import css from "./MoviePage.module.css";
+import css from "./MoviesPage.module.css";
 
-export function MoviePage() {
+export function MoviesPage() {
   return <>MoviePage</>;
 }

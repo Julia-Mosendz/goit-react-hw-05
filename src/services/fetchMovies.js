@@ -22,3 +22,20 @@ export async function fetchMoviesByQuery(query) {
   return response.data;
 }
 
+
+
+export async function fetchMovieCast(movieId) {
+  const response = await axios.get(`/movie/${movieId}/credits?language=en-US`);
+  return response.data;
+}
+
+
+
+export async function fetchMovieReviews(movieId) {
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?language=en-US&page=1`
+  );
+  return response.data;
+}
+
+

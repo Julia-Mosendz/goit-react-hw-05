@@ -1,55 +1,62 @@
 import { useEffect, useState } from "react";
-import css from "./MovieCast.module.css";
-import { fetchMovieCast } from "../../services/fetchMovies";
 import { useParams } from "react-router-dom";
+import { fetchMovieCast } from "../../services/fetchMovies";
+
+import css from "./MovieCast.module.css";
 
 export function MovieCast() {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const params = useParams()
-
+  const { movieId } = useParams();
 
   useEffect(() => {
-    async function uploadMovieCast() {
+    async function getMovieCast() {
       try {
-        setError(false)
         setLoading(true);
-        const response = await fetchMovieCast(params.movieId);
-        if (response.length === 0) {
-          throw new Error("Service is unavailable");
+        setError(false);
+        const { cast } = await fetchMovieCast(movieId);
+        if (cast.length === 0) {
+          setError(true);
+          return;
         }
-
-        setCast(response.cast);
+        setCast(cast);
       } catch (error) {
-        console.log(error);
-        setError(true)
+        console.log(error.message);
+        setError(true);
       } finally {
         setLoading(false);
       }
     }
-    uploadMovieCast()
-  }, [params.movieId]);
+    getMovieCast();
+  }, [movieId]);
 
   return (
-    <>{cast.length !== 0 && 
-      <div>
-        <ul>
-          {cast.map((actor) => {
+    <div className={css.castBody}>
+      {cast.length !== 0 && (
+        <ul className={css.list}>
+          {cast.map(({ id, name, profile_path }) => {
             return (
-              <li key={actor.cast_id}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-                  alt={actor.name}
-                />
-                <p>{actor.name}</p>
+              <li className={css.item} key={id}>
+                <div className={css.wrapper}>
+                  {profile_path ? (
+                    <img
+                      className={css.pic}
+                      src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                      alt={name}
+                    />
+                  ) : (
+                    <p className={css.abbreviation}>{name.slice(0, 1)}</p>
+                  )}
+                </div>
+                <h3 className={css.name}>{name}</h3>
               </li>
             );
           })}
         </ul>
-        {loading && <p>Loading cast...</p>}
-        {error && <p>No actors are found...</p>}
-      </div>
-    }</>
+      )}
+      {loading && <p>Loading cast...</p>}
+      {error && <p>❌ No actors found</p>}
+    </div>
   );
 }

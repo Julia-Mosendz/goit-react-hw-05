@@ -1,0 +1,79 @@
+.section {
+  position: relative;
+  padding: 40px 60px;
+}
+.backLink {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  flex-shrink: 0;
+  padding: 8px 24px;
+  color: var(--accent);
+  border: 1px solid;
+  border-radius: 8px;
+}
+.backLink:hover {
+  color: var(--text-icons);
+  border-color: transparent;
+  background-color: var(--accent);
+}
+.movieInfo {
+}
+.movieWrapper {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 32px;
+}
+.img {
+  border-radius: 8px;
+}
+.movieMeta {
+}
+.title {
+  margin-bottom: 16px;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+}
+.score,
+.overview,
+.genres {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.scoreMeta {
+  font-weight: 400;
+}
+.desc {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 300;
+}
+.genresList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.genresItem {
+  padding: 6px 12px;
+  font-size: 12px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+}
+.editional {
+  font-size: 1.5em;
+  text-align: center;
+}
+.editionalList {
+  display: flex;
+  gap: 24px;
+}
+.editionalLink {
+  display: block;
+  padding: 6px 18px;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+}

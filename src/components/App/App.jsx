@@ -7,10 +7,11 @@ import { MovieDetailsPage } from "../../pages/MovieDetailsPage/MovieDetailsPage"
 import { MovieCast } from "../MovieCast/MovieCast";
 import { MovieReviews } from "../MovieReviews/MovieReviews";
 import "./App.css";
+import "the-new-css-reset";
 
 function App() {
   return (
-    <div className="container">
+    <>
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -23,7 +24,7 @@ function App() {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

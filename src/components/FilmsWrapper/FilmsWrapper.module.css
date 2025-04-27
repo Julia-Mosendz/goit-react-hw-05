@@ -1,0 +1,24 @@
+.wrapper {
+  position: absolute;
+  top: -45%;
+  left: 15%;
+  z-index: -1;
+  transform: rotate(25deg);
+
+  animation: fade-in 400ms ease-in 300ms both;
+}
+
+.poster {
+  border-radius: 8px;
+  border: 0.25rem solid rgba(225, 225, 225, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.3) 0.125rem 0.125rem 1.25rem 0px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

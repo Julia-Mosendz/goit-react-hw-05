@@ -1,14 +1,13 @@
-import axios from "axios"
-import { ACCESS_TOKEN } from "./config"
+import axios from "axios";
+import { ACCESS_TOKEN } from "./config";
 
-axios.defaults.baseURL = "https://api.themoviedb.org/3"
-axios.defaults.headers.common["Authorization"] = `Bearer ${ACCESS_TOKEN}`
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
+axios.defaults.headers.common["Authorization"] = `Bearer ${ACCESS_TOKEN}`;
 
 export async function fetchTrendingMovies() {
-    const response = await axios.get("/trending/movie/day?language=en-US")
-    return response.data
+  const response = await axios.get("/trending/movie/day?language=en-US");
+  return response.data;
 }
-
 
 export async function fetchMovieDetails(movieId) {
   const response = await axios.get(`/movie/${movieId}?language=en-US`);
@@ -22,20 +21,12 @@ export async function fetchMoviesByQuery(query) {
   return response.data;
 }
 
-
-
-export async function fetchMovieCast(movieId) {
-  const response = await axios.get(`/movie/${movieId}/credits?language=en-US`);
+export async function fetchMovieCast(movieID = 268) {
+  const response = await axios.get(`/movie/${movieID}/credits`);
   return response.data;
 }
 
-
-
-export async function fetchMovieReviews(movieId) {
-  const response = await axios.get(
-    `/movie/${movieId}/reviews?language=en-US&page=1`
-  );
+export async function fetchMovieReviews(movieID = 268) {
+  const response = await axios.get(`/movie/${movieID}/reviews`);
   return response.data;
 }
-
-

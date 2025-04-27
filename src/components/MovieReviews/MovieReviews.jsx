@@ -1,47 +1,48 @@
-import { useEffect, useState } from "react";
-import css from "./MovieReviews.module.css";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieReviews } from "../../services/fetchMovies";
+import css from "./MovieReviews.module.css";
 
 export function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const params = useParams();
+  const { movieId } = useParams();
 
   useEffect(() => {
-    async function uploadMovieReviews() {
+    async function getMovieReviews() {
       try {
-        setError(false);
         setLoading(true);
-        const response = await fetchMovieReviews(params.movieId);
-        if (response.length === 0) {
-          throw new Error("Service is unavailable");
-        }
+        setError(false);
+        const { results } = await fetchMovieReviews(movieId);
+        console.log(results);
 
-        setReviews(response.results);
+        if (results.length === 0) {
+          setError(true);
+          return;
+        }
+        setReviews(results);
       } catch (error) {
-        console.log(error);
+        console.log(error.message);
         setError(true);
       } finally {
         setLoading(false);
       }
     }
-    uploadMovieReviews();
-  }, [params.movieId]);
+    getMovieReviews();
+  }, [movieId]);
 
   return (
-    <>
-      <ul>
-        {reviews.map((review) => {
-          return (
-            <li key={review.id}>
-              <h3>Author: {review.author}</h3>
-              <p>Comment: {review.content}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </>
+    <div className={css.reviews}>
+      {reviews.length !== 0 &&
+        reviews.map((review) => (
+          <article className={css.feedback} key={review.id}>
+            <h3 className={css.author}>{review.author.slice(0, 1)}</h3>
+            <p className={css.text}>{review.content}</p>
+          </article>
+        ))}
+      {loading && <p>Loading reviews...</p>}
+      {error && <p>❌ No reviews found</p>}
+    </div>
   );
 }

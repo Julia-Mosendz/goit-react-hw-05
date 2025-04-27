@@ -1,0 +1,67 @@
+.link {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 0.25rem solid rgba(46, 46, 46, 0.15);
+  background-clip: padding-box;
+  background-position: center;
+  background-size: cover;
+  transition: 200ms;
+  overflow: hidden;
+}
+.link:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0.125rem 0.125rem 0.5rem 0px;
+}
+.title {
+  margin: auto auto 0;
+  max-width: 160px;
+  padding: 6px 12px;
+  text-align: center;
+  color: var(--text-icons);
+  border-radius: 8px;
+  background-color: var(--dark-primary);
+
+  transition: 300ms;
+  transition-delay: 350ms;
+}
+
+.link:hover .title {
+  opacity: 0;
+  transition-delay: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: 10px;
+
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: 350ms ease-in;
+  transition-delay: 0ms;
+}
+
+.link:hover .overlay {
+  opacity: 1;
+  transition-delay: 200ms;
+}
+
+.overlayText {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  color: var(--text-icons);
+
+  transform: scale(0.3);
+  opacity: 0;
+  transition: 200ms ease-in;
+  transition-delay: 450ms;
+}
+.link:hover .overlayText {
+  transform: scale(1);
+  opacity: 1;
+}

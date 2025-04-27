@@ -1,13 +1,24 @@
-.header {
-    padding: 8px 0;
-}
-
 .nav {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  height: fit-content;
+  width: 100dvw;
+  background-color: var(--dark-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transform: translateY(50%) translateX(20px) rotate(270deg);
+  transform-origin: left;
 }
 
 .navLink {
-    padding: 16px 0;
+  color: var(--light-primary);
+  padding: 12px 0;
+  transition: 200ms;
+}
+.navLink:hover {
+  color: var(--text-icons);
 }

@@ -1,0 +1,31 @@
+.reviews {
+  padding: 24px 0;
+}
+.feedback {
+  display: flex;
+  gap: 12px;
+}
+.feedback:not(:last-child) {
+  margin-bottom: 8px;
+}
+.author {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--light-primary);
+  background-color: var(--dark-primary);
+  border-radius: 50%;
+  overflow: hidden;
+}
+.text {
+  font-size: 14px;
+  padding: 12px;
+  background-color: var(--light-primary);
+  border-radius: 8px;
+  box-shadow: 0 1px 5px 1px var(--divider);
+}

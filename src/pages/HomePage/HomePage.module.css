@@ -1,0 +1,50 @@
+.homePage {
+  position: relative;
+  min-width: 100dvw;
+  min-height: 100dvh;
+  padding-left: var(--page-gutter);
+  padding-top: 100px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: flex-start;
+}
+
+.wrapper {
+  max-width: 380px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.desc {
+  margin-bottom: 32px;
+  font-size: 1.4em;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.btn {
+  padding: 12px 32px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-icons);
+  background-color: var(--dark-primary);
+  border: 1px solid;
+  border-radius: 4px;
+
+  transition: 300ms;
+}
+.btn:hover {
+  color: var(--dark-primary);
+  background-color: transparent;
+  border-color: var(--dark-primary);
+}
+
+.films {
+  min-width: 100dvw;
+  min-height: 100dvh;
+  padding: 60px var(--page-gutter);
+}

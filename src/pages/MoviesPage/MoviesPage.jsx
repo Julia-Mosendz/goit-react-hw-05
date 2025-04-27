@@ -8,13 +8,16 @@ export function MoviesPage() {
   const [error, setError] = useState(false);
   const [searchMovies, setSearchMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams("")
-  const query = searchParams.get("query") ??  ""
-  
+  const [searchParams, setSearchParams] = useSearchParams("");
+  const query = searchParams.get("query") ?? "";
+
   useEffect(() => {
     async function uploadMoviesByQuery() {
+      if (query === "") {
+        return;
+      }
       try {
-        setError(false)
+        setError(false);
         setLoading(true);
         const response = await fetchMoviesByQuery(query);
 
@@ -25,7 +28,7 @@ export function MoviesPage() {
         setSearchMovies(response.results);
       } catch (error) {
         console.log(error);
-        setError(true)
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -41,18 +44,21 @@ export function MoviesPage() {
   };
 
   return (
-    <>
-      <form onSubmit={handleSearch}>
+    <section className={css.section}>
+      <form className={css.form} onSubmit={handleSearch}>
         <input
+          className={css.field}
           type="search"
           name="query"
           placeholder="Find your first film..."
         />
-        <button type="submit">Search</button>
+        <button className={css.btn} type="submit">
+          Search
+        </button>
       </form>
-      {searchMovies.length > 0 && <MovieList movies={searchMovies}/>}
+      {searchMovies.length > 0 && <MovieList movies={searchMovies} />}
       {error && <p>No movies found</p>}
       {loading && <p>Loading...</p>}
-    </>
+    </section>
   );
 }

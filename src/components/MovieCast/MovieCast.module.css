@@ -1,0 +1,58 @@
+.castBody {
+  max-width: 100%;
+  padding: 16px;
+  overflow-x: auto;
+}
+.list {
+  display: flex;
+  gap: 12px;
+  min-height: 120px;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 50%;
+}
+
+.item {
+  width: calc((100% - 12px) / 5);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--accent);
+  color: var(--text-icons);
+}
+
+.pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.abbreviation {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.name {
+  width: fit-content;
+  margin: 0 auto;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}

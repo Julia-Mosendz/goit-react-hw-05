@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { fetchTrendingMovies } from "../../services/fetchMovies";
-import { MovieList } from "../../components/MovieList/MovieList";
-import FilmsWrapper from "../../components/FilmsWrapper/FilmsWrapper";
+import { useEffect, useState } from 'react';
+import { fetchTrendingMovies } from '../../services/fetchMovies';
+import { MovieList } from '../../components/MovieList/MovieList';
+import FilmsWrapper from '../../components/FilmsWrapper/FilmsWrapper';
 
-import css from "./HomePage.module.css";
+import css from './HomePage.module.css';
 
-export function HomePage() {
+export default function HomePage() {
   const [trendyMovies, setTrendyMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +16,7 @@ export function HomePage() {
         const response = await fetchTrendingMovies();
 
         if (response.length === 0) {
-          throw new Error("Service is unavailable");
+          throw new Error('Service is unavailable');
         }
 
         setTrendyMovies(response.results);

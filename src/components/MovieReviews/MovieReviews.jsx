@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { fetchMovieReviews } from "../../services/fetchMovies";
-import css from "./MovieReviews.module.css";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchMovieReviews } from '../../services/fetchMovies';
+import css from './MovieReviews.module.css';
 
-export function MovieReviews() {
+export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -35,7 +35,7 @@ export function MovieReviews() {
   return (
     <div className={css.reviews}>
       {reviews.length !== 0 &&
-        reviews.map((review) => (
+        reviews.map(review => (
           <article className={css.feedback} key={review.id}>
             <h3 className={css.author}>{review.author.slice(0, 1)}</h3>
             <p className={css.text}>{review.content}</p>

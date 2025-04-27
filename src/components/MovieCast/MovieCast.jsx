@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { fetchMovieCast } from "../../services/fetchMovies";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchMovieCast } from '../../services/fetchMovies';
 
-import css from "./MovieCast.module.css";
+import css from './MovieCast.module.css';
 
-export function MovieCast() {
+export default function MovieCast() {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

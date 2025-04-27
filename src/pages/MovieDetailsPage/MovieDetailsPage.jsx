@@ -1,21 +1,21 @@
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from 'react';
 import {
   Outlet,
   useLocation,
   useParams,
   Link,
   NavLink,
-} from "react-router-dom";
-import { fetchMovieDetails } from "../../services/fetchMovies";
-import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
+} from 'react-router-dom';
+import { fetchMovieDetails } from '../../services/fetchMovies';
+import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 
-import css from "./MovieDetailsPage.module.css";
+import css from './MovieDetailsPage.module.css';
 
-export function MovieDetailsPage() {
+export default function MovieDetailsPage() {
   const [movieDetails, setMovieDetails] = useState(null);
   const [error, setError] = useState(false);
   const location = useLocation();
-  const linkRef = useRef(location.state ?? "/movies");
+  const linkRef = useRef(location.state ?? '/movies');
 
   const params = useParams();
 
@@ -47,7 +47,7 @@ export function MovieDetailsPage() {
               <div className={css.movieMeta}>
                 <h2 className={css.title}>{movieDetails.original_title}</h2>
                 <p className={css.score}>
-                  User score:{" "}
+                  User score:{' '}
                   <span className={css.scoreMeta}>
                     {movieDetails.vote_average.toFixed(2)}
                   </span>
@@ -56,7 +56,7 @@ export function MovieDetailsPage() {
                 <p className={css.desc}>{movieDetails.overview}</p>
                 <h3 className={css.genres}>Genres</h3>
                 <ul className={css.genresList}>
-                  {movieDetails.genres.map((genre) => {
+                  {movieDetails.genres.map(genre => {
                     return (
                       <li className={css.genresItem} key={genre.id}>
                         {genre.name}
@@ -82,7 +82,7 @@ export function MovieDetailsPage() {
               </ul>
             </div>
           </article>
-          <Suspense fallback="">
+          <Suspense fallback={<div>Loading...</div>}>
             <Outlet />
           </Suspense>
         </div>

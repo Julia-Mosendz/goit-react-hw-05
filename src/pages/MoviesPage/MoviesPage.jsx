@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import css from "./MoviesPage.module.css";
-import { fetchMoviesByQuery } from "../../services/fetchMovies";
-import { MovieList } from "../../components/MovieList/MovieList";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import css from './MoviesPage.module.css';
+import { fetchMoviesByQuery } from '../../services/fetchMovies';
+import { MovieList } from '../../components/MovieList/MovieList';
+import { useSearchParams } from 'react-router-dom';
 
-export function MoviesPage() {
+export default function MoviesPage() {
   const [error, setError] = useState(false);
   const [searchMovies, setSearchMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams("");
-  const query = searchParams.get("query") ?? "";
+  const [searchParams, setSearchParams] = useSearchParams('');
+  const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
     async function uploadMoviesByQuery() {
-      if (query === "") {
+      if (query === '') {
         return;
       }
       try {
@@ -22,7 +22,7 @@ export function MoviesPage() {
         const response = await fetchMoviesByQuery(query);
 
         if (response.length === 0) {
-          throw new Error("Service is unavailable");
+          throw new Error('Service is unavailable');
         }
 
         setSearchMovies(response.results);
@@ -36,7 +36,7 @@ export function MoviesPage() {
     uploadMoviesByQuery();
   }, [query, setSearchParams]);
 
-  const handleSearch = (event) => {
+  const handleSearch = event => {
     event.preventDefault();
     const form = event.target;
     setSearchParams({ query: form.elements.query.value });

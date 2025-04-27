@@ -7,7 +7,7 @@ import {
   NavLink,
 } from 'react-router-dom';
 import { fetchMovieDetails } from '../../services/fetchMovies';
-import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 import css from './MovieDetailsPage.module.css';
 

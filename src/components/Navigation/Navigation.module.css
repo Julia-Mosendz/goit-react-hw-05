@@ -1,17 +1,18 @@
 .nav {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   z-index: 100;
   height: fit-content;
-  width: 100dvw;
+  width: 100vw;
   background-color: var(--dark-primary);
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 16px;
-  transform: translateY(50%) translateX(20px) rotate(270deg);
-  transform-origin: left;
+  transform: translateY(calc(50% - 48px)) translateX(20px) rotate(90deg);
+  transform-origin: left center;
+  flex-direction: row;
+  padding: 0 20px;
 }
 
 .navLink {

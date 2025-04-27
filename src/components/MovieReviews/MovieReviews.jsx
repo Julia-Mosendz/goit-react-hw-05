@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieReviews } from "../../services/fetchMovies";
-
 import css from "./MovieReviews.module.css";
 
 export function MovieReviews() {
